@@ -1,0 +1,58 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Barlow Condensed", "serif";
+}
+
+@layer base {
+  * {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+}
+
+body {
+  background-image: url("./assets/background.avif");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+header {
+  background-image: url("./assets/background.avif");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.bg-image {
+  background-image: url("./assets/background.avif");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.bg-image li {
+  padding: 15px 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-family: Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
+}
+
+.containers {
+  width: 100%;
+  @media (width >= 40rem /* 640px */) {
+    max-width: 40rem /* 640px */;
+  }
+  @media (width >= 48rem /* 768px */) {
+    max-width: 48rem /* 768px */;
+  }
+  @media (width >= 64rem /* 1024px */) {
+    max-width: 1024px /* 1024px */;
+  }
+  @media (width >= 80rem /* 1280px */) {
+    max-width: 1024px /* 1280px */;
+  }
+  @media (width >= 96rem /* 1536px */) {
+    max-width: 1024px /* 1536px */;
+  }
+}
