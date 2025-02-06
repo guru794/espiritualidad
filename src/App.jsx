@@ -65,7 +65,7 @@ function MainContent() {
           </div>
         )}
       </header>
-      <div className="fixed bottom-10 right-10 z-40">
+      <div className="fixed bottom-5 right-5 z-40">
         <a
           className=" flex items-center text-white font-bold bg-green-400 rounded-full px-4 py-2 drop-shadow-xl transition-transform transform hover:scale-110"
           href={logos[5].url}
