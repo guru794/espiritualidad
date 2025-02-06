@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import icon from "../assets/burger_icon.png";
 const Navbar = () => {
@@ -19,6 +19,21 @@ const Navbar = () => {
 
   const isActive = (path) => location.pathname === path;
 
+  useEffect(() => {
+    if (active) {
+      document.documentElement.style.overflow = "hidden";
+      document.body.style.overflow = "hidden";
+    } else {
+      document.documentElement.style.overflow = "";
+      document.body.style.overflow = "";
+    }
+
+    return () => {
+      document.documentElement.style.overflow = "";
+      document.body.style.overflow = "";
+    };
+  }, [active]);
+
   return (
     <nav>
       <div className="relative flex justify-end items-center text-white gap-4 h-[40px] lg:hidden ">
@@ -33,7 +48,7 @@ const Navbar = () => {
             <img src={icon} alt="menu icon burger" width={30} />
           </button>
           <div
-            className={` absolute right-0 z-10 w-2/3 pr-8 text-right bg-image h-screen overflow-hidden transition-all duration-500 ease-in-out text-white ${
+            className={` absolute right-0 z-50 w-2/3 pr-8 text-right bg-image h-screen overflow-hidden transition-all duration-500 ease-in-out text-white ${
               active ? "" : "translate-x-full invisible"
             }`}
           >

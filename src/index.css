@@ -16,6 +16,7 @@ body {
   background-image: url("./assets/background.avif");
   background-size: cover;
   background-repeat: no-repeat;
+  overflow-x: hidden;
 }
 header {
   background-image: url("./assets/background.avif");

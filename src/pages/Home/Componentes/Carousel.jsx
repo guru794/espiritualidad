@@ -15,7 +15,7 @@ const Carousel = () => {
   };
 
   return (
-    <div className="w-full px-6 max-w-5xl mx-auto mt-10">
+    <div className="w-[full] px-6 max-w-5xl mx-auto mt-10">
       <Slider {...settings}>
         {videoIDs.map((id, index) => (
           <div key={index} className="flex justify-center">
