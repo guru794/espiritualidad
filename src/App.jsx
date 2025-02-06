@@ -29,12 +29,12 @@ function App() {
 
 function MainContent() {
   const logos = [
-    { logo: gmail, url: "mailto:anasuarezoficialmty@gmail.com" },
-    { logo: youtube, url: "https://www.youtube.com/@anasuarezoficial6145" },
-    { logo: instagram, url: "https://www.instagram.com/annasuarezb" },
+    { logo: gmail, url: "mailto:paginaoficial@wwwanasuarez300.com" },
+    { logo: youtube, url: "" },
+    { logo: instagram, url: "" },
     {
       logo: facebook,
-      url: "https://www.facebook.com/annasuarez300?mibextid=ZbWKwL",
+      url: "",
     },
     { logo: tiktok, url: "https://www.tiktok.com/@anasuarez300" },
     {
@@ -71,6 +71,22 @@ function MainContent() {
         <Route path="/trabajos/:slug" element={<ProyectosDetalle />} />
         <Route path="/home" element={<Home />} />
       </Routes>
+      <div className="fixed bottom-5 right-5 z-50">
+        <a
+          className=" flex items-center text-white font-bold bg-green-400 rounded-full px-4 py-2 drop-shadow-xl transition-transform transform hover:scale-110"
+          href={logos[5].url}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img
+            src={logos[5].logo}
+            alt="WhatsApp"
+            width={40}
+            className="drop-shadow-lg transition-transform transform hover:scale-110"
+          />
+          <span>Escribeme</span>
+        </a>
+      </div>
     </>
   );
 }
