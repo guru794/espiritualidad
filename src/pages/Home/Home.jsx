@@ -16,7 +16,7 @@ const Home = () => {
         />
         <meta
           name="keywords"
-          content="amarres de amor, consulta gratis, energía positiva, unión de parejas, rituales espirituales"
+          content="amarres, hechizos, energía positiva, unión de parejas, rituales"
         />
         <meta name="author" content="Tu Nombre o Marca" />
         <link rel="canonical" href="https://https://wwwanasuarez300.com/" />
