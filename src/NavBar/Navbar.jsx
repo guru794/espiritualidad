@@ -76,7 +76,7 @@ const Navbar = () => {
 const Links = ({ active, setActive, isActive, scrollToSection }) => {
   return (
     <ul
-      className={`transition-all duration-500 ease-in-out overflow-hidden text-white text-3xl py-4 lg:opacity-100 lg:flex lg:justify-end lg:gap-8 lg:text-base lg:mx-auto containers lg:mt-12  ${
+      className={`transition-all duration-500 ease-in-out overflow-hidden text-white text-2xl md:text-5xl py-4 lg:opacity-100 lg:flex lg:justify-end lg:gap-8 lg:text-base lg:mx-auto containers lg:mt-12  ${
         active ? "opacity-100" : "opacity-0"
       }`}
     >

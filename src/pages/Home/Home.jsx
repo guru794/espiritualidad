@@ -1,15 +1,26 @@
-import React, { useEffect } from "react";
-
+import React from "react";
 import heroImage from "../../assets/heroImage.avif";
 import { Link } from "react-router-dom";
 import Carousel from "./Componentes/Carousel";
 import Footer from "../../Footer/Footer";
+import { Helmet } from "react-helmet";
+
 const Home = () => {
-  useEffect(() => {
-    document.title = "Asesora | Ana Suarez";
-  }, []);
   return (
     <div className="font-display">
+      <Helmet>
+        <title>Asesora | Ana Suarez</title>
+        <meta
+          name="description"
+          content="Recibe una consulta gratuita sobre amarres espirituales positivos. Descubre cómo mejorar tu vida amorosa con energía positiva."
+        />
+        <meta
+          name="keywords"
+          content="amarres de amor, consulta gratis, energía positiva, unión de parejas, rituales espirituales"
+        />
+        <meta name="author" content="Tu Nombre o Marca" />
+        <link rel="canonical" href="https://https://wwwanasuarez300.com/" />
+      </Helmet>
       <Hero />
       <Tutoriales />
       <Footer />
