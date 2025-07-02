@@ -6,6 +6,10 @@ const Formulario = () => {
     Apellido: "",
     Celular: "",
   });
+  
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [lastSubmitTime, setLastSubmitTime] = useState(0);
+  const [timeRemaining, setTimeRemaining] = useState(0);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -14,15 +18,36 @@ const Formulario = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    // Validación de campos vacíos
+    if (!formData.Nombre.trim() || !formData.Apellido.trim() || !formData.Celular.trim()) {
+      alert("Por favor, completa todos los campos antes de enviar");
+      return;
+    }
+
+    // Verificar throttling (10 segundos)
+    const currentTime = Date.now();
+    const timeSinceLastSubmit = currentTime - lastSubmitTime;
+    const cooldownTime = 10000; // 10 segundos en milisegundos
+
+    if (timeSinceLastSubmit < cooldownTime) {
+      const remainingSeconds = Math.ceil((cooldownTime - timeSinceLastSubmit) / 1000);
+      alert(`Por favor espera ${remainingSeconds} segundos antes de enviar otra solicitud`);
+      return;
+    }
+
+    setIsSubmitting(true);
+    setLastSubmitTime(currentTime);
+
     try {
+      console.log(formData)
       const response = await fetch("https://sheetdb.io/api/v1/5343nd5tq4rjf", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ data: formData }),
+        body: JSON.stringify(formData),
       });
-
+      console.log(response)
       if (response.ok) {
         alert("Datos enviados correctamente");
         setFormData({ Nombre: "", Apellido: "", Celular: "" });
@@ -32,8 +57,24 @@ const Formulario = () => {
     } catch (error) {
       console.error("Error al enviar los datos", error);
       alert("Hubo un error al enviar el formulario");
+    } finally {
+      setIsSubmitting(false);
+      
+      // Iniciar countdown visual
+      let remaining = 10;
+      setTimeRemaining(remaining);
+      const countdown = setInterval(() => {
+        remaining--;
+        setTimeRemaining(remaining);
+        if (remaining <= 0) {
+          clearInterval(countdown);
+          setTimeRemaining(0);
+        }
+      }, 1000);
     }
   };
+
+  const isDisabled = isSubmitting || timeRemaining > 0;
 
   return (
     <form
@@ -75,9 +116,19 @@ const Formulario = () => {
 
       <button
         type="submit"
-        className="w-full bg-purple-600 hover:bg-purple-700 py-2 rounded text-white font-bold"
+        disabled={isDisabled}
+        className={`w-full py-2 rounded text-white font-bold transition-colors ${
+          isDisabled 
+            ? 'bg-gray-600 cursor-not-allowed' 
+            : 'bg-purple-600 hover:bg-purple-700'
+        }`}
       >
-        Enviar
+        {isSubmitting 
+          ? "Enviando..." 
+          : timeRemaining > 0 
+          ? `Espera ${timeRemaining}s` 
+          : "Enviar"
+        }
       </button>
     </form>
   );
